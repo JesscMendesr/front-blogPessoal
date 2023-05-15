@@ -1,0 +1,33 @@
+.item-menu {
+  position: relative;
+  padding: 8px 8px 8px 0px;
+}
+
+.item-menu::after {
+  content: "";
+  height: 1px;
+  width: 0%;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  transition: 0.5s;
+}
+
+.item-menu:hover::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  left: 0;
+}
+
+.botao {
+  background-color: black;
+  padding: 8px 16px;
+  border: 1px solid white;
+}
+
+.botao:hover {
+  background-color: #da0606;
+}
