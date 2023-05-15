@@ -1,6 +1,11 @@
+.navbar {
+  background-color: black !important;
+  border-bottom: 0.02rem solid white !important;
+  padding: 10px 0 !important;
+}
+
 .item-menu {
   position: relative;
-  padding: 8px 8px 8px 0px;
 }
 
 .item-menu::after {
@@ -23,11 +28,9 @@
 }
 
 .botao {
-  background-color: black;
-  padding: 8px 16px;
-  border: 1px solid white;
+  font-family: "Poppins" !important;
 }
-
 .botao:hover {
-  background-color: #da0606;
+  color: white !important;
+  border: 1px solid white !important;
 }

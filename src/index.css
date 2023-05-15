@@ -1,1 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+body {
+  margin: 0;
+  background-color: black;
+  text-transform: uppercase !important;
+  color: white;
+}
+
+.MuiTypography-h1 {
+  font-weight: 700 !important;
+}

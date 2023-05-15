@@ -5,37 +5,28 @@ import "./Home.css";
 function home() {
   return (
     <>
-      <Grid container xs={10} style={{ margin: "auto", position: "relative" }}>
-        <video loop autoPlay muted>
+      <Grid
+        className="container"
+        container
+        xs={12}
+        md={10}
+        style={{ margin: "auto", position: "relative" }}
+      >
+        <video height="495px" loop autoPlay muted>
           <source
             src="/src/assets/Vinheta introdução cinema antigo.mp4"
             type="video/mp4"
           />
         </video>
-        <Grid item style={{ backgroundColor: "rgb(0, 0, 0, 0.8)" }}>
-          <Box className="intro" display={"flex"} style={{ margin: "100px 0" }}>
+        <Grid item style={{ backgroundColor: "rgb(0, 0, 5, 0.8)" }}>
+          <Box className="intro" display={"flex"} color={"white"} my={"100px"}>
             <Box>
-              <h1
-                style={{
-                  color: "white",
-                  textTransform: "uppercase",
-                  fontSize: "100px",
-                  margin: "20px 0",
-                }}
-              >
-                Cinematize
-              </h1>
-              <p
-                style={{
-                  color: "white",
-                  textTransform: "uppercase",
-                  fontSize: "64px",
-                  display: "inline",
-                  fontWeight: "400",
-                }}
-              >
+              <Box mb={5}>
+                <Typography variant="h1">Cinematize</Typography>
+              </Box>
+              <Typography variant="h2">
                 Críticas, resenhas, opniões e tudo mais sobre a sétima arte.
-              </p>
+              </Typography>
             </Box>
           </Box>
         </Grid>
