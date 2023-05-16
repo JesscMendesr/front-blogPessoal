@@ -1,24 +1,18 @@
 import React from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Typography } from "@material-ui/core";
 import "./Home.css";
 
 function home() {
   return (
     <>
-      <Grid
-        className="container"
-        container
-        xs={12}
-        md={10}
-        style={{ margin: "auto", position: "relative" }}
-      >
+      <Grid className="container" container xs={10} style={{ margin: "auto", position: "relative" }}>
         <video height="495px" loop autoPlay muted>
           <source
             src="/src/assets/Vinheta introdução cinema antigo.mp4"
             type="video/mp4"
           />
         </video>
-        <Grid item style={{ backgroundColor: "rgb(0, 0, 5, 0.8)" }}>
+        <Box paddingX={20} className="caixa">
           <Box className="intro" display={"flex"} color={"white"} my={"100px"}>
             <Box>
               <Box mb={5}>
@@ -27,9 +21,12 @@ function home() {
               <Typography variant="h2">
                 Críticas, resenhas, opniões e tudo mais sobre a sétima arte.
               </Typography>
+              <Box  marginY={4}>
+                <Button size="large" className='botao3'variant="outlined" >Escreva</Button>
+              </Box>
             </Box>
           </Box>
-        </Grid>
+        </Box>
       </Grid>
     </>
   );

@@ -1,0 +1,35 @@
+.imagemLogin {
+  background-image: url("https://i.imgur.com/sobaU5h.gif");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+/* body {
+  background-color: white !important;
+} */
+
+.MuiFilledInput-input{
+  background-color:  #181815 !important;
+  border-color: white !important;
+}
+
+.MuiInputLabel-filled{
+  font-family: 'Poppins' !important;
+  font-size: 0.8rem !important;
+  color: #8D8D89 !important;
+}
+
+.botao2{
+  font-weight: bold !important;
+  color: white !important;
+  border-color: white !important;
+}
+
+.botao2:hover{
+  font-weight: bold !important;
+  color: black !important;
+  border-color: black !important;
+  background-color: white !important;
+}

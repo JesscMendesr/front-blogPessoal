@@ -1,9 +1,10 @@
 import Home from "./paginas/home/Home";
 import Navbar from "./components/estaticos/navbar/Navbar";
 import Footer from "./components/estaticos/footer/Footer";
-import { Grid } from "@material-ui/core";
+import Login from "./paginas/Login/Login";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const theme = createTheme({
@@ -13,11 +14,15 @@ function App() {
   });
   return (
     <ThemeProvider theme={theme}>
-      <Grid container xs={12} md={10} style={{ margin: "auto" }}>
+      <BrowserRouter>
         <Navbar />
-        <Home />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
         <Footer />
-      </Grid>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
