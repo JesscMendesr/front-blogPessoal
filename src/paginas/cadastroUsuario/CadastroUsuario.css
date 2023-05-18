@@ -1,0 +1,12 @@
+.imagem2 {
+  background-image: url("https://d3swacfcujrr1g.cloudfront.net/img/uploads/2016/04/Deus_e_o_diabo_cartaz.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.btnCancelar{
+  margin-right: 20px !important;
+}
