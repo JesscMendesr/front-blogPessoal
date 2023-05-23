@@ -55,10 +55,10 @@ function Login() {
   return (
     <>
       <Grid container direction='row' justifyContent='center' alignItems='center' >
-        <Grid alignItems='center' item xs={8}>
-          <Box paddingX={46}>
+        <Grid alignItems='center' item xs={10} md={8}>
+          <Box justifySelf='center' maxWidth='50%' margin='auto'>
             <form onSubmit={onSubmit}>
-              <Typography variant="h4" gutterBottom align="center"
+              <Typography className='text-underline' variant="h4" gutterBottom align="center"
               >
                 Entrar
               </Typography>
@@ -74,7 +74,7 @@ function Login() {
                   Não tem uma conta?
                 </Typography>
               </Box>
-              <Link to='/cadastrousuario'>
+              <Link className='link' to='/cadastrousuario'>
                 <Typography variant="subtitle1" gutterBottom align="center" style= {{textDecoration:'underline'}}>
                   Cadastre-se
                 </Typography>

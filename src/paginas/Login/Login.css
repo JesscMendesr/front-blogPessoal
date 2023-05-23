@@ -4,6 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.5;
+  width: 100%;
 }
 
 /* body {
@@ -13,6 +14,7 @@
 .MuiFilledInput-input{
   background-color:  #181815 !important;
   border-color: white !important;
+  color: white !important;
 }
 
 .MuiInputLabel-filled{
@@ -32,4 +34,9 @@
   color: black !important;
   border-color: black !important;
   background-color: white !important;
+}
+
+.link{
+  color: white !important;
+  text-decoration: none !important;
 }

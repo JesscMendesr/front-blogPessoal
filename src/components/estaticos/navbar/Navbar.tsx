@@ -16,17 +16,22 @@ function Navbar() {
               </Typography>
             </Box>
             <Stack alignItems={"center"} justifyContent="start" flexDirection={"row"} gap={"40px"}>
-              <Box className="item-menu" p={1} mx={1}>
-                <Typography variant="body2" color="inherit">
-                  home
-                </Typography>
-              </Box>
-              <Box p={1} className="item-menu" mx={1}
-              >
-                <Typography variant="subtitle1" color="inherit">
-                  postagens
-                </Typography>
-              </Box>
+              <Link className="link" to='/home'>
+                <Box className="item-menu" p={1} mx={1}>
+                  <Typography variant="subtitle1" color="inherit">
+                    home
+                  </Typography>
+                </Box>
+              </Link>
+              <Link className="link" to='/postagens'>
+                <Box p={1} className="item-menu" mx={1}
+                >
+                  <Typography variant="subtitle1" color="inherit">
+                    postagens
+                  </Typography>
+                </Box>
+              </Link>
+              <Link className='link'to='/temas'>
               <Box
                 p={1}
                 className="item-menu"
@@ -36,6 +41,7 @@ function Navbar() {
                   temas
                 </Typography>
               </Box>
+              </Link>
               <Box
                 p={1}
                 className="item-menu"

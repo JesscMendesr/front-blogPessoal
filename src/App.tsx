@@ -7,6 +7,8 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
+import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens'
+import ListaTema from "./components/temas/listaTema/ListaTema";
 
 function App() {
   const theme = createTheme({
@@ -23,6 +25,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+          <Route path="/postagens" element={<ListaPostagens />} />
+          <Route path="/temas" element={<ListaTema />} />
         </Routes>
         <Footer />
       </BrowserRouter>

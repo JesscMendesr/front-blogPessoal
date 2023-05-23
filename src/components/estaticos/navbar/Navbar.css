@@ -7,8 +7,12 @@
   border-bottom: 0.02rem solid white !important;
   padding: 10px 0 !important;
 }
+.link {
+  text-decoration: none !important;
+}
 
 .item-menu {
+  color: white !important;
   cursor: pointer;
   position: relative;
 }

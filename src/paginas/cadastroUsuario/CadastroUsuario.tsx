@@ -1,10 +1,11 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core'
+import { Box, Grid, Typography } from '@material-ui/core'
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './CadastroUsuario.css'
 import { TextField } from '@mui/material'
 import User from '../../models/User'
 import { cadastroUsuario } from '../../services/Service'
+import Button from '@mui/material/Button';
 
 function CadastroUsuario() {
 
@@ -76,9 +77,9 @@ function CadastroUsuario() {
   return (
     <>
       <Grid container direction='row' justifyContent='center' alignItems='center'>
-        <Grid item xs={6} className='imagem2'></Grid>
-        <Grid item xs={6} alignItems='center'>
-          <Box>
+        <Grid item xs={4} className='imagem2'></Grid>
+        <Grid item xs={8} alignItems='center' justifyContent='center'>
+          <Box justifySelf='center' maxWidth='50%' margin='auto'>
             <form onSubmit={cadastrar}>
                 <Typography variant="h4" gutterBottom align="center"
                 >
@@ -90,7 +91,9 @@ function CadastroUsuario() {
                 <TextField value={confirmarSenha} onChange={(event: ChangeEvent<HTMLInputElement>) => confirmSenha(event)} id="confirmarSenha" label="Confirmar senha" name="confirmarSenha" margin="normal" fullWidth variant="filled" color="info" type="password" />
                 <TextField value={user.foto} onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)} id="foto" label="Foto" name="foto" margin="normal" fullWidth variant="filled" color="info" />
                 <Box marginTop={4} textAlign='center'>
-                  <Link to='/Login' className="text-decorator-none"> <Button className='botao2 btnCancelar' variant="outlined" size='large' >Cancelar</Button></Link>
+                  <Link to='/Login' className="text-decorator-none"> <Button className='btnCancelar' size='large' variant="outlined" color="error">
+                    Cancelar
+                  </Button></Link>
                   <Button type='submit' className='botao2' variant="outlined" size='large' >Cadastrar</Button>
                 </Box>
               </form>

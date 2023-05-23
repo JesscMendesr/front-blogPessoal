@@ -1,6 +1,8 @@
 import React from "react";
 import { Box, Button, Grid, Typography } from "@material-ui/core";
 import "./Home.css";
+import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
+
 
 function home() {
   return (
@@ -22,12 +24,16 @@ function home() {
                 Críticas, resenhas, opniões e tudo mais sobre a sétima arte.
               </Typography>
               <Box  marginY={4}>
-                <Button size="large" className='botao3'variant="outlined" >Escreva</Button>
+                <Button size="large" className='botao3'variant="outlined" >Ver postagens</Button>
               </Box>
             </Box>
           </Box>
         </Box>
+        <Grid xs={12} className="postagens">
+          <TabPostagens/>
+        </Grid>
       </Grid>
+
     </>
   );
 }
