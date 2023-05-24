@@ -1,0 +1,9 @@
+.box {
+  color: white !important;
+  background-color: black !important;
+  border: 1px solid white !important;
+}
+
+.texto {
+  color: white !important;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core'
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core'
 import { Tema } from '../../../models/Tema'
 import useLocalStorage from 'react-use-localstorage';
 import { Link, useNavigate } from 'react-router-dom';
@@ -35,22 +35,24 @@ function ListaTema() {
     <>
       {
         temas.map(tema =>(
-                <Box  m={4} maxWidth='25%' >
-                <Card className='card-posts'>
+          <Grid container wrap='wrap'>
+                <Box m={2} minWidth="25%">
+                <Card  className='card-posts'>
                 <CardContent className='card-posts'>
-                  <Typography gutterBottom variant="subtitle2" component="div">
+                  <Typography 
+                  gutterBottom variant="subtitle2" component="div">
                     Temas
                   </Typography>
                   <Typography gutterBottom variant="h6" component="div">
                     {tema.descricao}
                   </Typography>
                   <CardActions>
-                  <Link to=''>
+                  <Link to={`/formularioTema/${tema.id}`}>
                     <Box>
                       <Button className='btnAtualizar'variant='outlined' size="small">Atualizar</Button>
                     </Box>
                   </Link>
-                  <Link to=''>
+                  <Link to={`/deletarTema/${tema.id}`}>
                     <Box>
                       <Button variant='outlined' className="btnDeletar" size="small">Deletar</Button>
                     </Box>
@@ -59,6 +61,7 @@ function ListaTema() {
                   </CardContent>
                 </Card>
               </Box>
+              </Grid>
       ))
       }
     </>

@@ -2,7 +2,7 @@ body {
   margin: 0;
   background-color: black;
   text-transform: uppercase !important;
-  color: white;
+  color: white !important;
 }
 
 .MuiTypography-h1 {
