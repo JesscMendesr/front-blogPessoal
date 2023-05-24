@@ -7,12 +7,13 @@ import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CadastroUsuario from "./paginas/cadastroUsuario/CadastroUsuario";
-import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens'
+import ListaPostagens from './components/postagens/listaPostagens/ListaPostagem'
 import ListaTema from "./components/temas/listaTema/ListaTema";
 import CadastroPost from "./components/postagens/cadastroPost/CadastroPost";
 import CadastroTema from "./components/temas/cadastroTema/CadastroTema";
 import DeletarPostagem from "./components/postagens/deletarPostagem/deletarPostagem";
 import DeletarTema from "./components/temas/deletarTema/DeletarTema";
+import ListaPostagem from "./components/postagens/listaPostagens/ListaPostagem";
 
 function App() {
   const theme = createTheme({
@@ -29,7 +30,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
-          <Route path="/postagens" element={<ListaPostagens />} />
+          <Route path="/postagens" element={<ListaPostagem />} />
           <Route path="/temas" element={<ListaTema />} />
           <Route path="/formularioPostagem" element={<CadastroPost />} />
           <Route path="/formularioPostagem/:id" element={<CadastroPost />} />
