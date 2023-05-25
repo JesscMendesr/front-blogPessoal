@@ -25,7 +25,6 @@ function App() {
     },
   });
   return (
-
     <ThemeProvider theme={theme}>
       <Provider store={store}> 
       <BrowserRouter>

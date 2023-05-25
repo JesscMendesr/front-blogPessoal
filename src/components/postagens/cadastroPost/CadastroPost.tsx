@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
+import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText, Box } from "@material-ui/core"
 import { useNavigate, useParams } from 'react-router-dom';
 import { Postagem } from '../../../models/Postagem';
 import { buscaId, put, post, busca } from '../../../services/Service';
@@ -7,6 +7,7 @@ import { Tema } from '../../../models/Tema';
 import './CadastroPost.css'
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { Stack } from '@mui/material';
 
 function CadastroPost() {
     let navigate = useNavigate();
@@ -102,36 +103,39 @@ function CadastroPost() {
         navigate('/postagens')
     }
 
-  return (
+return (
+    <Box paddingY={8}>
     <Container maxWidth="sm" className="topo">
-      <form onSubmit={onSubmit}>
-          <Typography  className='form' variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro postagem</Typography>
-          <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="titulo" margin="normal" fullWidth variant="filled" name='titulo'/>
-          <TextField value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="texto" name="texto" margin="normal" fullWidth variant="filled" />
-
-          <FormControl  >
-              <InputLabel className='inputSelect'variant="filled" id="demo-simple-select-helper-label" >Tema </InputLabel>
-              <Select className='select'
-                  labelId="demo-simple-select-helper-label"
-                  id="demo-simple-select-helper"
-                  onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
-                      headers: {
-                          'Authorization': token
-                      }
-                  })}>
-                  {
-                      temas.map(tema => (
-                          <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
-                      ))
-                  }
-              </Select>
-              <FormHelperText>Escolha um tema para a postagem</FormHelperText>
-              <Button type="submit" variant="contained" color="primary">
-                  Finalizar
-              </Button>
-          </FormControl>
-      </form>
+        <form onSubmit={onSubmit}>
+        <Stack gap={2}>
+            <Typography  className='form' variant="h4" color="textSecondary" component="h1" align="center" >{id !== undefined ? ' atualizar ' : ' cadastrar '} postagem</Typography>
+            <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="titulo" margin="normal" fullWidth variant="filled" name='titulo'/>
+            <TextField  className='text' value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="texto" name="texto" margin="normal" fullWidth variant="filled" />
+            <FormControl>
+                <InputLabel className='inputSelect'variant="filled" id="demo-simple-select-helper-label" >Tema </InputLabel>
+                <Select className='select'
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                onChange={(e) => buscaId(`/temas/${e.target.value}`, setTema, {
+                        headers: {
+                            'Authorization': token
+                            }
+                    })}>
+                {
+                    temas.map(tema => (
+                        <MenuItem value={tema.id}>{tema.descricao}</MenuItem>
+                    ))
+                }
+                </Select>
+                <FormHelperText>Escolha um tema para a postagem</FormHelperText>
+                <Button className='btn' type="submit" variant="contained" color="primary" disabled={tema.id === 0}>
+                    Finalizar
+                </Button>
+            </FormControl>
+            </Stack>
+        </form>
     </Container>
+    </Box>
   )
 }
 

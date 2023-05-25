@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     paper: {
       position: 'absolute',
       width: 400,
-      backgroundColor: '#111111',
+      backgroundColor: 'black',
       border: '1px solid #fff',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
@@ -61,8 +61,9 @@ function ModalPostagem() {
   return (
     <div>
       <Button
+        size="large"
         variant="outlined"
-        className="btnModal"
+        className="botao3"
         onClick={handleOpen}>Nova Postagem</Button>
       <Modal
         open={open}

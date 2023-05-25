@@ -1,11 +1,12 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
-import { Container, Typography, Button, TextField } from "@material-ui/core"
+import { Container, Typography, Button, TextField, Box } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import { Tema } from '../../../models/Tema';
 import { buscaId, post, put } from '../../../services/Service';
 import './CadastroTema.css'
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { Stack } from '@mui/material';
 
 
 function CadastroTema() {
@@ -14,7 +15,7 @@ function CadastroTema() {
   const token = useSelector<TokenState, TokenState["tokens"]>(
     (state) => state.tokens
   );
-  
+
   const [tema, setTema] = useState<Tema>({
     id: 0, 
     descricao: ''
@@ -77,15 +78,21 @@ function back() {
 }
   return (
     <>
+    <Box paddingY={10}>
       <Container maxWidth="sm" className="topo">
-            <form className='form' onSubmit={onSubmit}>
-                <Typography className='form' variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro tema</Typography>
+            <form className='form box' onSubmit={onSubmit}>
+              <Stack gap={2}>
+                <Typography className='form' variant="h4" color="textSecondary" component="h1" align="center" >Cadastrar tema</Typography>
                 <TextField value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedTema(e)} id="descricao" label="descricao" name="descricao" margin="normal" fullWidth variant="filled" />
-                <Button type="submit" variant="contained" color="primary">
-                    Finalizar
-                </Button>
+                <Box>
+                  <Button className='btn' type="submit" variant="contained" color="primary" disabled={tema.descricao.length < 4}>
+                      Finalizar
+                  </Button>
+                </Box>
+                </Stack>
             </form>
-        </Container>
+      </Container>
+    </Box>
     </>
   )
 }

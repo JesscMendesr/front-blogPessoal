@@ -58,8 +58,8 @@ function Navbar() {
             </Typography>
           </Box>
           </Link>
-          <Link to='/formularioTema'>
-          <Box p={1} className="item-menu link" mx={1}>
+          <Link className='link' to='/formularioTema'>
+          <Box p={1} className="item-menu" mx={1}>
             <Typography variant="subtitle1" color="inherit">
               cadastrar tema
             </Typography>
