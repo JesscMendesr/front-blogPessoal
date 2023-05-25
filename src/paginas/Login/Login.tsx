@@ -3,16 +3,19 @@ import { Box, Button, Grid, TextField} from "@mui/material/";
 import {Typography } from "@material-ui/core";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
 import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
+import { useDispatch } from "react-redux";
+import { addToken } from "../../store/tokens/actions";
 
 function Login() {
   // cria a variavel para navegação interna pela rota
   const navigate = useNavigate();
 
+  const dispatch = useDispatch()
+
   // cria um estado para armazenamento no localStorage do navegador
-  const [token, setToken] = useLocalStorage('token');
+  const [token, setToken] = useState('');
 
   // cria um estado de controle para o usuário preencher os dados de login 
   const [userLogin, setUserLogin] = useState<UserLogin>(
@@ -35,6 +38,7 @@ function Login() {
       // efeito que fica de olho no token, e quando chega algo diferente de vazio, navega o usuario para a home.
       useEffect(()=>{
         if(token != ''){
+            dispatch(addToken(token));
             navigate('/home')
         }
     }, [token])

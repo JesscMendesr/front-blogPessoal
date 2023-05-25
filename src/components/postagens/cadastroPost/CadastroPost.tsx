@@ -1,17 +1,20 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { Postagem } from '../../../models/Postagem';
 import { buscaId, put, post, busca } from '../../../services/Service';
 import { Tema } from '../../../models/Tema';
 import './CadastroPost.css'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function CadastroPost() {
-  let navigate = useNavigate();
+    let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [temas, setTemas] = useState<Tema[]>([])
-    const [token, setToken] = useLocalStorage('token');
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {
         if (token == "") {
@@ -27,11 +30,11 @@ function CadastroPost() {
             descricao: ''
         })
     const [postagem, setPostagem] = useState<Postagem>({
-          id: 0,
-          titulo: '',
-          texto: '',
-          tema: null
-      })
+        id: 0,
+        titulo: '',
+        texto: '',
+        tema: null
+    })
 
     useEffect(() => { 
         setPostagem({

@@ -33,27 +33,28 @@ function CadastroUsuario() {
   // state para armazenar o campo de confirmação de senha, e fazer a checagem com a senha do usuário
   const [confirmarSenha, setConfirmarSenha] = useState('');
 
-  // Função para atualizar o estado do confirmar senha
+  // Função para atualizar o estado do confirmar senha. esta função espera um dado do tipo changeEvent dentro de um elemento input
   function confirmSenha(event: ChangeEvent<HTMLInputElement>){
-    setConfirmarSenha(event.target.value);
+    setConfirmarSenha(event.target.value); // esta função seta um valor no campo de confirmação de senha.
   }
 
-  // Função para atualizar o estado de controle do formulário de usuário, automatizada para todos os campos
+  // Função para atualizar o estado de controle do formulário de usuário, automatizada para todos os campos.
   function updateModel(event: ChangeEvent<HTMLInputElement>){
     setUser({
-      ...user,
-      [event.target.name]: event.target.value,
+      ...user, // spread operator permite expandir o conteúdo da array, não sendo necessário digitar todos os atributos novamente. 
+      [event.target.name]: event.target.value, // identifica o input de acordo com o name dele e captura o seu valor.
     });
   }
 
-  // Função de disparo da requisição para o backend, é bom deixar ela como assincrona
+  // Função de disparo da requisição para o backend, é bom deixar ela como assincrona pois o backend leva um tempo até receber a requisição.
   async function cadastrar(event: ChangeEvent<HTMLFormElement>){
-    event.preventDefault();
+    event.preventDefault(); // evento para impedir que a página recarregue ao enviar o formulário. se issoa ocontecer todos os dados serão perdidos antes dos mesmos serem enviados parao backend.
+
     // verificar se os campos de senha e confirmar são iguais, e com no mínimo 8 caracteres
     if (user.senha === confirmarSenha && user.senha.length >= 8) {
       // caso passe pelo If, vai executar a tentativa de cadastro, e dar o alerta de sucesso
       try {
-        await cadastroUsuario('usuarios/cadastrar', user, setUserResp);
+        await cadastroUsuario('usuarios/cadastrar', user, setUserResp); // o await é para esperar a resposta do backend.
         alert('Usuário cadastrado com sucesso')
       } catch (error){
         // se der erro no cadastro, por exemplo por e-mail repetido, vai cair nessa msg de erro
@@ -62,8 +63,8 @@ function CadastroUsuario() {
     }else {
       //aqui é a mensagem de erro para o caso dos campos de senha estarem diferentes, vai avisar e apagar os dois campos
       alert('Os campos de Senha e Confirmar senha são diferentes');
-      setUser({...user, senha:''});
-      setConfirmarSenha('')
+      setUser({...user, senha:''}); // esvazia o texto do campo senha
+      setConfirmarSenha('')  // esvazia o texto do campo confirmarSenha;
     }
   }
 

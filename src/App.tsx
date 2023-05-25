@@ -14,6 +14,9 @@ import CadastroTema from "./components/temas/cadastroTema/CadastroTema";
 import DeletarPostagem from "./components/postagens/deletarPostagem/deletarPostagem";
 import DeletarTema from "./components/temas/deletarTema/DeletarTema";
 import ListaPostagem from "./components/postagens/listaPostagens/ListaPostagem";
+import { Provider } from "react-redux";
+import store from "./store/store";
+
 
 function App() {
   const theme = createTheme({
@@ -22,7 +25,9 @@ function App() {
     },
   });
   return (
+
     <ThemeProvider theme={theme}>
+      <Provider store={store}> 
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -41,7 +46,9 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      </Provider>
     </ThemeProvider>
+
   );
 }
 

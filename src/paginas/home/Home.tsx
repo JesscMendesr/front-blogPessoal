@@ -3,13 +3,16 @@ import { Box, Button, Grid, Typography } from "@material-ui/core";
 import "./Home.css";
 import TabPostagens from "../../components/postagens/tabPostagens/TabPostagens";
 import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
-import { useNavigate } from "react-router-dom";
-import useLocalStorage from "react-use-localstorage";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/tokensReducer";
 
 
 function home() {
   let navigate = useNavigate();
-  const [token, setToken] = useLocalStorage('token')
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token == "") {
@@ -40,9 +43,11 @@ function home() {
                 <Box marginRight={1}>
                   <ModalPostagem />
                 </Box>
-                <Box marginY={4}>
-                  <Button size="large" className='botao3'variant="outlined" >Ver postagens</Button>
-                </Box>
+                <Link to='/postagens'>
+                  <Box marginY={4}>
+                    <Button size="large" className='botao3'variant="outlined" >Ver postagens</Button>
+                  </Box>
+                </Link>
               </Box>
             </Box>
           </Box>
