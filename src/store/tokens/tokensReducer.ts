@@ -15,7 +15,7 @@ export const tokenReducer = (state: TokenState = initialState, action: Action) =
     case "ADD_TOKEN": {
       return {tokens: action.payload, id: state.id}
     };
-    case "ADD_TOKEN": {
+    case "ADD_ID": {
       return {id: action.payload, tokens: state.tokens}
     }
     default:
