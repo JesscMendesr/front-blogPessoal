@@ -6,5 +6,5 @@ export interface Postagem{
   titulo: string;
   texto: string;
   tema?: Tema| null;
-  usuario?: User | null // linha adicionada para vincular um usuário
+  usuario?: User| null 
 }

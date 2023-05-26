@@ -48,12 +48,12 @@ function Login() {
   }
 
       // efeito que fica de olho no token, e quando chega algo diferente de vazio, navega o usuario para a home.
-      useEffect(()=>{
-        if(token != ''){
-            dispatch(addToken(token));
-            navigate('/home')
-        }
-    }, [token])
+    //   useEffect(()=>{
+    //     if(token != ''){
+    //         dispatch(addToken(token));
+    //         navigate('/home')
+    //     }
+    // }, [token])
 
     useEffect(() => {
       if(respUserLogin.token !== ''){

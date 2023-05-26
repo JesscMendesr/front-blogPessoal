@@ -17,10 +17,11 @@ function CadastroPost() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
-    
-    const userId = useSelector<TokenState, TokenState['id']>(
+
+    const userId = useSelector<TokenState, TokenState["id"]>(
         (state) => state.id
-    )
+    );
+
 
     useEffect(() => {
         if (token == "") {
@@ -52,12 +53,11 @@ function CadastroPost() {
     })
 
 
-
     useEffect(() => { 
         setPostagem({
             ...postagem,
             tema: tema,
-            usuario: usuario // adicionar o usuario dentro da postagem que está sendo enviada para o backend
+            usuario: usuario
         })
     }, [tema])
 
