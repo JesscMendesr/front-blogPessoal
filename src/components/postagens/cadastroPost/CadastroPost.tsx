@@ -8,6 +8,7 @@ import './CadastroPost.css'
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { Stack } from '@mui/material';
+import User from '../../../models/User';
 
 function CadastroPost() {
     let navigate = useNavigate();
@@ -16,6 +17,10 @@ function CadastroPost() {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     );
+    
+    const userId = useSelector<TokenState, TokenState['id']>(
+        (state) => state.id
+    )
 
     useEffect(() => {
         if (token == "") {
@@ -34,13 +39,25 @@ function CadastroPost() {
         id: 0,
         titulo: '',
         texto: '',
-        tema: null
+        tema: null,
+        usuario: null
     })
+
+    const [usuario, setUsuario] = useState<User>({
+        id: +userId,
+        nome: '',
+        usuario: '',
+        senha: '',
+        foto: ''
+    })
+
+
 
     useEffect(() => { 
         setPostagem({
             ...postagem,
-            tema: tema
+            tema: tema,
+            usuario: usuario // adicionar o usuario dentro da postagem que está sendo enviada para o backend
         })
     }, [tema])
 

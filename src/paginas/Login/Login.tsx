@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/Service";
 import UserLogin from "../../models/UserLogin";
 import { useDispatch } from "react-redux";
-import { addToken } from "../../store/tokens/actions";
+import { addId, addToken } from "../../store/tokens/actions";
 
 function Login() {
   // cria a variavel para navegação interna pela rota
@@ -21,11 +21,23 @@ function Login() {
   const [userLogin, setUserLogin] = useState<UserLogin>(
     {
       id: 0,
+      nome: '',
       usuario: '',
       senha: '',
+      foto: '',
       token: ''
     }
   )
+  // state para receber o JSON de conexão do backend
+  const [respUserLogin, setRespUserLogin] = useState<UserLogin>({
+    id: 0,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: '',
+    token: ''
+  })
+
 
   // atualiza os dados do estado acima, e ajuda a formar o JSON para a requisição
   function updatedModel(e: ChangeEvent<HTMLInputElement>){
@@ -43,13 +55,20 @@ function Login() {
         }
     }, [token])
 
+    useEffect(() => {
+      if(respUserLogin.token !== ''){
+        dispatch(addToken(respUserLogin.token))
+        dispatch(addId(respUserLogin.id.toString()))
+        navigate('/home')
+      }
+    }, [respUserLogin.token])
 
   // função que envia o formulário para o backend
   async function onSubmit(e: ChangeEvent<HTMLFormElement>){
     // previne que o formulário atualize a página
     e.preventDefault();
     try {
-      await login(`/usuarios/logar`, userLogin, setToken)
+      await login(`/usuarios/logar`, userLogin, setRespUserLogin)
       alert('Usuário logado com sucesso!');
     } catch (error) {
       alert('Dados do usuário inconsistentes. Erro ao logar!');

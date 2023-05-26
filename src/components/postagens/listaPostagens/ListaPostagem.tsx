@@ -48,6 +48,9 @@ function ListaPostagem() {
           <Typography className='bodyText' variant="body2">
             {post.texto}
           </Typography>
+          <Typography variant="body2" component="p">
+            Postado por: {post.usuario?.nome}
+          </Typography>
           <CardActions>
             <Link to={`/formularioPostagem/${post.id}`}>
             <Button className='btnAtualizar'variant='outlined' size="small">Atualizar</Button>
