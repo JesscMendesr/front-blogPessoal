@@ -6,6 +6,7 @@ import { TextField } from '@mui/material'
 import User from '../../models/User'
 import { cadastroUsuario } from '../../services/Service'
 import Button from '@mui/material/Button';
+import {toast} from 'react-toastify'
 
 function CadastroUsuario() {
 
@@ -55,14 +56,41 @@ function CadastroUsuario() {
       // caso passe pelo If, vai executar a tentativa de cadastro, e dar o alerta de sucesso
       try {
         await cadastroUsuario('usuarios/cadastrar', user, setUserResp); // o await é para esperar a resposta do backend.
-        alert('Usuário cadastrado com sucesso')
+        toast.success('Usuário cadastrado com sucesso!',{
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+      })
       } catch (error){
         // se der erro no cadastro, por exemplo por e-mail repetido, vai cair nessa msg de erro
-        alert('Falha ao cadastrar o usuário, verifique os campos');
+        toast.error('Falha ao cadastrar o usuário, verifique os campos',{
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+      })
       }
     }else {
       //aqui é a mensagem de erro para o caso dos campos de senha estarem diferentes, vai avisar e apagar os dois campos
-      alert('Os campos de Senha e Confirmar senha são diferentes');
+      toast.warning('Os campos de Senha e Confirmar senha são diferentes',{
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    })
       setUser({...user, senha:''}); // esvazia o texto do campo senha
       setConfirmarSenha('')  // esvazia o texto do campo confirmarSenha;
     }

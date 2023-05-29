@@ -6,7 +6,8 @@ interface User{
   usuario: string;
   senha: string;
   foto: string;
-  postagem?: Postagem[] 
+  postagem?: Postagem[] | null
+
 
 }
 

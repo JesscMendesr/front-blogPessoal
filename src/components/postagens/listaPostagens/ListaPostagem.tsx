@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import {toast} from 'react-toastify'
 
 function ListaPostagem() {
   const [posts, setPosts] = useState<Postagem[]>([])
@@ -16,7 +17,16 @@ function ListaPostagem() {
   
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error('Você precisa estar logado!',{
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    })
       navigate("/login")
     }
   }, [token])
@@ -35,6 +45,11 @@ function ListaPostagem() {
   
   return (
     <>
+      {posts.length === 0 
+      // com o sinal de interrogação, fazemos a saida padrão do if, para caso a condição seja verdadeira
+        ? <div className="alinhamento"><span className="loader"></span></div> 
+        // o dois pontos (:) representa o ELSE de um if padrão, e colocamos a saida para caso a condição seja falsa. Nesse caso, exibir nada
+        : <></>}
       {posts.map(post =>(
         <Box  m={4} maxWidth='25%' >
         <Card className='card-posts'>
