@@ -19,6 +19,7 @@ import store from "./store/store";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Perfil from "./components/perfil/Perfil";
+import PostIndividual from "./paginas/postIndividual/PostIndividual";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
+        
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
@@ -48,6 +50,8 @@ function App() {
           <Route path="/perfil/:id" element={<Perfil />} />
           <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
           <Route path="/deletarTema/:id" element={<DeletarTema />} />
+          <Route path="/postindividual/:id" element={<PostIndividual/>} />
+
         </Routes>
         <Footer />
       </BrowserRouter>

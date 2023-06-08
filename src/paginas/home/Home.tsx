@@ -50,9 +50,6 @@ function home() {
                 Críticas, resenhas, opniões e tudo mais sobre a sétima arte.
               </Typography>
               <Box display='flex' alignItems='center'>
-                <Box marginRight={1}>
-                  <ModalPostagem />
-                </Box>
                 <Link to='/postagens'>
                   <Box marginY={4}>
                     <Button size="large" className='botao3'variant="outlined" >Ver postagens</Button>

@@ -2,6 +2,22 @@
   cursor: pointer;
 }
 
+.iconPost{
+  padding-left: 1rem !important;
+} 
+.color-b{
+  color: black !important;
+}
+
+.icon{
+  color: white !important;
+}
+
+.menu-perfil{
+  text-transform: none !important;
+
+}
+
 .navbar {
   background-color: black !important;
   border-bottom: 0.02rem solid white !important;

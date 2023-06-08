@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core'
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import './ListaPostagens.css'
 import { Postagem } from '../../../models/Postagem';
@@ -42,6 +42,8 @@ function ListaPostagem() {
   useEffect(() => {
     getPost()
   }, [posts])
+
+
   
   return (
     <>
@@ -51,29 +53,32 @@ function ListaPostagem() {
         // o dois pontos (:) representa o ELSE de um if padrão, e colocamos a saida para caso a condição seja falsa. Nesse caso, exibir nada
         : <></>}
       {posts.map(post =>(
-        <Box  m={4} maxWidth='25%' >
-        <Card className='card-posts'>
+        <Box display={'flex'}  justifyContent={'center'} m={4}  >
+        <Card className='containerBox'>
         <CardContent className='card-posts'>
+        <Box display={'flex'} alignItems={'center'}>
+            <Box paddingRight={2} paddingBottom={2}>
+              <Avatar  src={post.usuario?.foto}> </Avatar>
+              </Box>
+              <Typography variant="body2" component="p">
+                {post.usuario?.nome}
+              </Typography>
+          </Box>
+          <Link className='reset-link' to={`/postindividual/${post.id}`}>
           <Typography  className='text-underline' gutterBottom variant="h5" component="div">
             {post.titulo}
           </Typography>
+          </Link>
+          <Box>
           <Typography gutterBottom variant="subtitle2" component="div">
           {post.tema?.descricao}
           </Typography>
+
+
+          </Box>
           <Typography className='bodyText' variant="body2">
             {post.texto}
           </Typography>
-          <Typography variant="body2" component="p">
-            Postado por: {post.usuario?.nome}
-          </Typography>
-          <CardActions>
-            <Link to={`/formularioPostagem/${post.id}`}>
-            <Button className='btnAtualizar'variant='outlined' size="small">Atualizar</Button>
-            </Link>
-            <Link to={`/deletarPostagem/${post.id}`}>
-            <Button variant='outlined' className="btnDeletar" size="small">Deletar</Button>
-            </Link>
-          </CardActions>
           </CardContent>
         </Card>
       </Box>

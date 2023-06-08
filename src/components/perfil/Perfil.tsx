@@ -7,6 +7,7 @@ import { Avatar, Box, Button, Card, CardActions, CardContent, Container, Grid, T
 import { Stack } from '@mui/material'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import './Perfil.css'
 
 function Perfil() {
   const token = useSelector<TokenState, TokenState['tokens']>(
@@ -34,7 +35,7 @@ function Perfil() {
                 
         useEffect(() => {
           getUserById(+userId)
-          }, [])
+          }, []);
 
 
           useEffect(() => {
@@ -43,6 +44,7 @@ function Perfil() {
               senha: ''
             })
           }, [usuario.usuario])
+
 
           const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 
@@ -57,14 +59,6 @@ function Perfil() {
             });
           }
         
-
-
-
-
-
-
-
-
           async function atualizar(event: ChangeEvent<HTMLFormElement>) {
             event.preventDefault();
             if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
@@ -91,17 +85,17 @@ function Perfil() {
           
   return (
     <>
-    <Grid container>
-    <Box paddingY={10}>
-      <Container maxWidth="sm" className="topo">
-            <form className='form box' onSubmit={atualizar}>
+    <Grid container direction='column'>
+    <Box  display={'flex'} justifyContent='center'  paddingY={0}>
+      <Grid xs={6}>
+            <form className='form-perfil' onSubmit={atualizar}>
               <Stack gap={2}>
-                <Typography className='form' variant="h4" color="textSecondary" component="h1" align="center" >Cadastrar tema</Typography>
-                <Avatar alt="Remy Sharp" src={usuario.foto} />
+                <Typography className='form' variant="h4" color="textSecondary" component="h1" align="center" >Configurar perfil</Typography>
+                <Avatar  className='avatar-perfil' alt="Remy Sharp" src={usuario.foto} />
                 <TextField value={usuario.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id="nome" label="nome" name="nome" margin="normal" fullWidth variant="filled" />
                 <TextField value={usuario.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id="usuario" label="usuário" name="usuario" margin="normal" fullWidth variant="filled" />
                 <TextField value={usuario.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id="foto" label="foto" name="foto" margin="normal" fullWidth variant="filled" />
-                <TextField value={usuario.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id="senha" label="Senha" name="senha" margin="normal"  fullWidth variant="filled" />
+                <TextField value={usuario.senha} type="password" onChange={(e: ChangeEvent<HTMLInputElement>) => updateModel(e)} id="senha" label="Senha" name="senha" margin="normal"  fullWidth variant="filled" />
                 <TextField value={confirmarSenha}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => confirmSenha(event)
                   } id="confirmarSenha" label="Confirmar senha" name="confirmarSenha" margin="normal" type='password' fullWidth variant="filled" />
@@ -112,9 +106,12 @@ function Perfil() {
                 </Box>
                 </Stack>
             </form>
-      </Container>
+      </Grid>
     </Box>
-    <Box>
+    <Grid container  justifyContent='center'>
+
+      <Grid item xs={6} className='containerPosts' >
+      <Typography  variant='h4'>Minhas postagens</Typography>
       {usuario.postagem?.map((post) => (
                 <Card className='card-posts'>
                 <CardContent className='card-posts'>
@@ -141,7 +138,8 @@ function Perfil() {
                   </CardContent>
                 </Card>
       ))}
-    </Box>
+      </Grid>
+    </Grid>
     </Grid>
     </>
   )

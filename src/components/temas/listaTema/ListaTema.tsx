@@ -47,6 +47,7 @@ function ListaTema() {
 
   return (
     <>
+    <Grid container justifyContent='center' className="container">
     {temas.length === 0 
       // com o sinal de interrogação, fazemos a saida padrão do if, para caso a condição seja verdadeira
         ? <div className="alinhamento"><span className="loader"></span></div> 
@@ -54,9 +55,8 @@ function ListaTema() {
         : <></>}
       {
         temas.map(tema =>(
-          <Grid container wrap='wrap'>
-                <Box m={2} minWidth="25%">
-                <Card  className='card-posts'>
+          <Box className="containerTemas">
+                <Card>
                 <CardContent className='card-posts'>
                   <Typography 
                   gutterBottom variant="subtitle2" component="div">
@@ -80,9 +80,9 @@ function ListaTema() {
                   </CardContent>
                 </Card>
               </Box>
-              </Grid>
       ))
       }
+      </Grid>
     </>
   );
 }

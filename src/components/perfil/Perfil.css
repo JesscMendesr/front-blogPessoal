@@ -1,0 +1,18 @@
+.avatar-perfil {
+  width: 100px !important;
+  height: 100px !important;
+  align-self: center !important;
+}
+
+.form-perfil{
+  /* border: 1px solid white !important; */
+  background-color: #222528 !important;
+  padding: 60px;
+}
+
+.containerPosts{
+  margin: 60px 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem !important;
+}

@@ -1,11 +1,12 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
-import {Button } from "@material-ui/core"
+import {Button, Typography } from "@material-ui/core"
 import {Box} from '@mui/material';
 import CloseIcon from '@material-ui/icons/Close';
 import './ModalPostagem.css';
 import CadastroPost from '../cadastroPost/CadastroPost';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 
 function getModalStyle() {
@@ -60,11 +61,10 @@ function ModalPostagem() {
   );
   return (
     <div>
-      <Button
-        size="large"
-        variant="outlined"
-        className="botao3"
-        onClick={handleOpen}>Nova Postagem</Button>
+      <Button className="btn" onClick={handleOpen} >
+        <Typography>Escrever Post</Typography>
+        <EditNoteIcon className="iconPost" />
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -73,6 +73,7 @@ function ModalPostagem() {
       >
         {body}
       </Modal>
+    
     </div>
   )
 }
